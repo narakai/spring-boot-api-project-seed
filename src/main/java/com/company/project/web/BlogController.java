@@ -5,10 +5,7 @@ import com.company.project.model.Blog;
 import com.company.project.service.BlogService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -23,7 +20,7 @@ public class BlogController {
     private BlogService blogService;
 
     @PostMapping("/add")
-    public Result add(Blog blog) {
+    public Result add(@RequestBody Blog blog) {
         blogService.save(blog);
         return ResultGenerator.genSuccessResult();
     }
@@ -35,7 +32,7 @@ public class BlogController {
     }
 
     @PostMapping("/update")
-    public Result update(Blog blog) {
+    public Result update(@RequestBody Blog blog) {
         blogService.update(blog);
         return ResultGenerator.genSuccessResult();
     }
