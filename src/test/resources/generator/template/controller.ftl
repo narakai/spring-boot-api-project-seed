@@ -21,7 +21,7 @@ public class ${modelNameUpperCamel}Controller {
     private ${modelNameUpperCamel}Service ${modelNameLowerCamel}Service;
 
     @PostMapping("/add")
-    public Result add(@RequestBody ${modelNameUpperCamel} ${modelNameLowerCamel}) {
+    public Result add(${modelNameUpperCamel} ${modelNameLowerCamel}) {
         ${modelNameLowerCamel}Service.save(${modelNameLowerCamel});
         return ResultGenerator.genSuccessResult();
     }
@@ -33,7 +33,7 @@ public class ${modelNameUpperCamel}Controller {
     }
 
     @PostMapping("/update")
-    public Result update(@RequestBody ${modelNameUpperCamel} ${modelNameLowerCamel}) {
+    public Result update(${modelNameUpperCamel} ${modelNameLowerCamel}) {
         ${modelNameLowerCamel}Service.update(${modelNameLowerCamel});
         return ResultGenerator.genSuccessResult();
     }
