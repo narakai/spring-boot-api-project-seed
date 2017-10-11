@@ -2,10 +2,12 @@ package com.company.project.web;
 
 import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
+import com.company.project.core.ServiceException;
 import com.company.project.model.Blog;
 import com.company.project.service.BlogService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.springframework.dao.DataAccessException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -25,7 +27,7 @@ public class BlogController {
         try {
             blogService.save(blog);
             return ResultGenerator.genSuccessResult();
-        } catch (Exception e) {
+        } catch (DataAccessException e) {
             return ResultGenerator.genFailResult("Failed to add");
         }
     }
@@ -35,7 +37,7 @@ public class BlogController {
         try {
             blogService.deleteById(id);
             return ResultGenerator.genSuccessResult();
-        } catch (Exception e) {
+        } catch (DataAccessException e) {
             return ResultGenerator.genFailResult("Failed to delete");
         }
     }
@@ -45,7 +47,7 @@ public class BlogController {
         try {
             blogService.update(blog);
             return ResultGenerator.genSuccessResult();
-        } catch (Exception e) {
+        } catch (DataAccessException e) {
             return ResultGenerator.genFailResult("Failed to update");
         }
     }
@@ -54,7 +56,7 @@ public class BlogController {
     public Result detail(@RequestParam Integer id) {
         Blog blog = blogService.findById(id);
         if (blog == null) {
-            return ResultGenerator.genFailResult("Could not find blog");
+            throw new ServiceException("can not find blog");
         } else {
             return ResultGenerator.genSuccessResult(blog);
         }
@@ -67,7 +69,7 @@ public class BlogController {
             List<Blog> list = blogService.findAll();
             PageInfo pageInfo = new PageInfo(list);
             return ResultGenerator.genSuccessResult(pageInfo);
-        } catch (Exception e) {
+        } catch (DataAccessException e) {
             return ResultGenerator.genFailResult("Could not find blog list");
         }
     }
