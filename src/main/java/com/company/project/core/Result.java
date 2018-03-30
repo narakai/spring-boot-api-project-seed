@@ -1,6 +1,7 @@
 package com.company.project.core;
 
-import com.alibaba.fastjson.JSON;
+
+import com.google.gson.Gson;
 
 /**
  * 统一API响应结果封装
@@ -39,6 +40,6 @@ public class Result {
 
     @Override
     public String toString() {
-        return JSON.toJSONString(this);
+        return new Gson().toJson(this);
     }
 }
