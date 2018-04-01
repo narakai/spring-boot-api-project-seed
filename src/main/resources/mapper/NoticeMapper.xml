@@ -11,5 +11,6 @@
     <result column="desc_en" jdbcType="VARCHAR" property="descEn" />
     <result column="desc_cn" jdbcType="VARCHAR" property="descCn" />
     <result column="desc_tw" jdbcType="VARCHAR" property="descTw" />
+    <result column="notice" jdbcType="VARCHAR" property="notice" />
   </resultMap>
 </mapper>

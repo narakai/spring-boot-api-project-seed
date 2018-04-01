@@ -24,6 +24,8 @@ public class Notice {
     @Column(name = "desc_tw")
     private String descTw;
 
+    private String notice;
+
     /**
      * @return id
      */
@@ -106,5 +108,19 @@ public class Notice {
      */
     public void setDescTw(String descTw) {
         this.descTw = descTw;
+    }
+
+    /**
+     * @return notice
+     */
+    public String getNotice() {
+        return notice;
+    }
+
+    /**
+     * @param notice
+     */
+    public void setNotice(String notice) {
+        this.notice = notice;
     }
 }
