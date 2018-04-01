@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.ArticleMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.Article">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="has_news_easy_image" jdbcType="BIT" property="hasNewsEasyImage" />
+    <result column="has_news_easy_movie" jdbcType="BIT" property="hasNewsEasyMovie" />
+    <result column="has_news_easy_voice" jdbcType="BIT" property="hasNewsEasyVoice" />
+    <result column="has_news_web_image" jdbcType="BIT" property="hasNewsWebImage" />
+    <result column="has_news_web_movie" jdbcType="BIT" property="hasNewsWebMovie" />
+    <result column="news_creation_time" jdbcType="VARCHAR" property="newsCreationTime" />
+    <result column="news_display_flag" jdbcType="BIT" property="newsDisplayFlag" />
+    <result column="news_easy_image_uri" jdbcType="VARCHAR" property="newsEasyImageUri" />
+    <result column="news_easy_movie_uri" jdbcType="VARCHAR" property="newsEasyMovieUri" />
+    <result column="news_easy_voice_uri" jdbcType="VARCHAR" property="newsEasyVoiceUri" />
+    <result column="news_file_ver" jdbcType="BIT" property="newsFileVer" />
+    <result column="news_id" jdbcType="VARCHAR" property="newsId" />
+    <result column="news_prearranged_time" jdbcType="VARCHAR" property="newsPrearrangedTime" />
+    <result column="news_preview_time" jdbcType="VARCHAR" property="newsPreviewTime" />
+    <result column="news_priority_number" jdbcType="VARCHAR" property="newsPriorityNumber" />
+    <result column="news_publication_status" jdbcType="BIT" property="newsPublicationStatus" />
+    <result column="news_publication_time" jdbcType="VARCHAR" property="newsPublicationTime" />
+    <result column="news_web_image_uri" jdbcType="VARCHAR" property="newsWebImageUri" />
+    <result column="news_web_movie_uri" jdbcType="VARCHAR" property="newsWebMovieUri" />
+    <result column="news_web_url" jdbcType="VARCHAR" property="newsWebUrl" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="title_with_ruby" jdbcType="VARCHAR" property="titleWithRuby" />
+  </resultMap>
+</mapper>
