@@ -24,7 +24,17 @@ public class Notice {
     @Column(name = "desc_tw")
     private String descTw;
 
-    private String notice;
+    @Column(name = "notice_en")
+    private String noticeEn;
+
+    @Column(name = "notice_id")
+    private Integer noticeId;
+
+    @Column(name = "notice_cn")
+    private String noticeCn;
+
+    @Column(name = "notice_tw")
+    private String noticeTw;
 
     /**
      * @return id
@@ -111,16 +121,58 @@ public class Notice {
     }
 
     /**
-     * @return notice
+     * @return notice_en
      */
-    public String getNotice() {
-        return notice;
+    public String getNoticeEn() {
+        return noticeEn;
     }
 
     /**
-     * @param notice
+     * @param noticeEn
      */
-    public void setNotice(String notice) {
-        this.notice = notice;
+    public void setNoticeEn(String noticeEn) {
+        this.noticeEn = noticeEn;
+    }
+
+    /**
+     * @return notice_id
+     */
+    public Integer getNoticeId() {
+        return noticeId;
+    }
+
+    /**
+     * @param noticeId
+     */
+    public void setNoticeId(Integer noticeId) {
+        this.noticeId = noticeId;
+    }
+
+    /**
+     * @return notice_cn
+     */
+    public String getNoticeCn() {
+        return noticeCn;
+    }
+
+    /**
+     * @param noticeCn
+     */
+    public void setNoticeCn(String noticeCn) {
+        this.noticeCn = noticeCn;
+    }
+
+    /**
+     * @return notice_tw
+     */
+    public String getNoticeTw() {
+        return noticeTw;
+    }
+
+    /**
+     * @param noticeTw
+     */
+    public void setNoticeTw(String noticeTw) {
+        this.noticeTw = noticeTw;
     }
 }
