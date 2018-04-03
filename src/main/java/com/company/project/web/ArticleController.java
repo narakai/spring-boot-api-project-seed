@@ -72,6 +72,7 @@ public class ArticleController {
             }
             if (articleList.size() > 0) {
                 for(Article article1 : articleList){
+                    Thread.sleep(5000);
                     runShell(article1.getNews_id());
                 }
             }
