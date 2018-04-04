@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -59,11 +57,9 @@ public class ArticleController {
                 String[] dateArray = stringArray[j].split(NHK);
                 String formatString2 = dateArray[1].replace("},{", NHK).replace("}", "").replace("{", "");
                 String[] jsonArr = formatString2.split(NHK);
-                System.out.println(jsonArr[0]);
                 for (String aJsonArr : jsonArr) {
                     String jsonStr = "{" + aJsonArr + "}";
                     Article articleModel = new Gson().fromJson(jsonStr, Article.class);
-//                    System.out.println(articleModel.getNews_creation_time());
                     if (!articleListDB.contains(articleModel)) {
                         articleList.add(articleModel);
                         articleService.save(articleModel);
@@ -71,8 +67,8 @@ public class ArticleController {
                 }
             }
             if (articleList.size() > 0) {
-                for(Article article1 : articleList){
-                    Thread.sleep(5000);
+                for (Article article1 : articleList) {
+//                    System.out.println(" article1 " + article1.getNews_id());
                     runShell(article1.getNews_id());
                 }
             }
@@ -81,28 +77,49 @@ public class ArticleController {
         }
     }
 
-    private void runShell(String newsId) {
+    private synchronized void runShell(String newsId) {
         String returnCode = "";
         try {
 //            /Users/laileon/Documents/test.sh
-            Process process = Runtime.getRuntime().exec("chmod 755 /home/ffmpeg.sh");
-            process.waitFor();
+//            Process process = Runtime.getRuntime().exec("chmod 755 /home/ffmpeg.sh");
+//            process.waitFor();
             // test2.sh是要执行的shell文件，param1参数值，test2.sh和param1之间要有空格
             // 多个参数可以在param1后面继续增加，但不要忘记空格！！
-            process = Runtime.getRuntime().exec("/home/ffmpeg.sh" + " " + newsId);
+            System.out.println("IM IN");
+            Process process = Runtime.getRuntime().exec("/home/ffmpeg.sh" + " " + newsId);
             BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line = null;
-            StringBuilder sb = new StringBuilder("");
+            StringBuilder sb = new StringBuilder();
             while ((line = br.readLine()) != null) {
                 sb.append(line);
             }
             br.close();
-            System.out.println(sb.toString());
+            printMessage(process.getInputStream());
+            printMessage(process.getErrorStream());
             returnCode = process.waitFor() + "";
-            System.out.println(returnCode);
+            System.out.println("code " + returnCode);
         } catch (IOException | InterruptedException e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    private void printMessage(final InputStream input) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Reader reader = new InputStreamReader(input);
+                BufferedReader bf = new BufferedReader(reader);
+                String line = null;
+                try {
+                    while ((line = bf.readLine()) != null) {
+                        System.out.println(line);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
     @PostMapping("/add")
