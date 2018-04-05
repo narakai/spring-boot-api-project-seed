@@ -33,7 +33,7 @@ public class ArticleController {
     RestTemplate restTemplate = new RestTemplate();
 
     //test 1 min
-    @Scheduled(cron = "0 0/10 * * * 1-5")
+    @Scheduled(cron = "0 0/5 * * * 1-5")
     public void timerToNow() {
 
 //        System.out.println("now time:" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
