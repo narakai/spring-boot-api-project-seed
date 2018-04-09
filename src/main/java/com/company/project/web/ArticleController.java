@@ -77,7 +77,7 @@ public class ArticleController {
         }
     }
 
-    private synchronized void runShell(String newsId) {
+    private void runShell(String newsId) {
         String returnCode = "";
         try {
 //            /Users/laileon/Documents/test.sh
