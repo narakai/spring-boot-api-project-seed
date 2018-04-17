@@ -24,7 +24,7 @@ public class ScheduledTasks {
     RestTemplate restTemplate = new RestTemplate();
 
     //test 1 min
-    @Scheduled(cron = "0 0/5 * * * 1-5")
+    @Scheduled(cron = "0 0/5 9-19 * * 1-5")
     public void timerToNow() {
 
         System.out.println("now time:" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
@@ -89,6 +89,7 @@ public class ScheduledTasks {
             builder.redirectOutput(ProcessBuilder.Redirect.INHERIT);
             builder.redirectError(ProcessBuilder.Redirect.INHERIT);
             Process process = builder.start();
+            Thread.sleep(30000);
 //            BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
 //            String line = null;
 //            StringBuilder sb = new StringBuilder();
@@ -98,8 +99,8 @@ public class ScheduledTasks {
 //            br.close();
 //            printMessage(process.getInputStream());
 //            printMessage(process.getErrorStream());
-            returnCode = process.waitFor();
-            System.out.println("code " + returnCode);
+//            returnCode = process.waitFor();
+//            System.out.println("code " + returnCode);
         } catch (IOException | InterruptedException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
