@@ -89,6 +89,7 @@ public class ScheduledTasks {
             builder.redirectOutput(ProcessBuilder.Redirect.INHERIT);
             builder.redirectError(ProcessBuilder.Redirect.INHERIT);
             Process process = builder.start();
+            Thread.sleep(30000);
 //            Thread.sleep(30000);
 //            BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
 //            String line = null;
@@ -99,8 +100,8 @@ public class ScheduledTasks {
 //            br.close();
 //            printMessage(process.getInputStream());
 //            printMessage(process.getErrorStream());
-            returnCode = process.waitFor();
-            System.out.println("code " + returnCode);
+//            returnCode = process.waitFor();
+//            System.out.println("code " + returnCode);
         } catch (IOException | InterruptedException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
