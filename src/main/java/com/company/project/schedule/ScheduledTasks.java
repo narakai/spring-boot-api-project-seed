@@ -17,11 +17,11 @@ import java.util.List;
 
 @Component
 public class ScheduledTasks {
-    public static final String NHK = "KHNPJ";
+    private static final String NHK = "KHNPJ";
     @Resource
     private ArticleService articleService;
 
-    RestTemplate restTemplate = new RestTemplate();
+    private RestTemplate restTemplate = new RestTemplate();
 
     //test 1 min
     @Scheduled(cron = "0 0/5 * * * 1-5")
@@ -89,7 +89,8 @@ public class ScheduledTasks {
             builder.redirectOutput(ProcessBuilder.Redirect.INHERIT);
             builder.redirectError(ProcessBuilder.Redirect.INHERIT);
             Process process = builder.start();
-            Thread.sleep(30000);
+            returnCode = process.waitFor();
+            System.out.println("code " + returnCode);
 //            Thread.sleep(30000);
 //            BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
 //            String line = null;
