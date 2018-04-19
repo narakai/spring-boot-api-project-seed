@@ -24,8 +24,21 @@ public class ScheduledTasks {
     private RestTemplate restTemplate = new RestTemplate();
 
     //test 1 min
-    @Scheduled(cron = "0 0/5 * * * 1-5")
-    public void timerToNow() {
+    @Scheduled(cron = "0 35 10 * * 1-5")
+    public void timerToNow1() {
+
+        System.out.println("now time:" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        String url = "http://www3.nhk.or.jp/news/easy/news-list.json";
+        String result = restTemplate.getForObject(url, String.class, new HashMap<>());
+        getArticleData(result);
+//        runShell("k10011351191000");
+//        runShell("k10011382561000");
+//        System.out.println(result);
+    }
+
+    //test 1 min
+    @Scheduled(cron = "0 35 14 * * 1-5")
+    public void timerToNow2() {
 
         System.out.println("now time:" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         String url = "http://www3.nhk.or.jp/news/easy/news-list.json";
