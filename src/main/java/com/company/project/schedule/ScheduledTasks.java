@@ -24,7 +24,7 @@ public class ScheduledTasks {
     private RestTemplate restTemplate = new RestTemplate();
 
     //test 1 min
-    @Scheduled(cron = "0 50 10 * * 1-5")
+    @Scheduled(cron = "0 35 10 * * 1-5")
     public void timerToNow1() {
 
         System.out.println("now time:" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
@@ -37,7 +37,7 @@ public class ScheduledTasks {
     }
 
     //test 1 min
-    @Scheduled(cron = "0 50 14 * * 1-5")
+    @Scheduled(cron = "0 35 14 * * 1-5")
     public void timerToNow2() {
 
         System.out.println("now time:" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
