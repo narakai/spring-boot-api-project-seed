@@ -29,18 +29,18 @@ public class ScheduledTasks {
     private ExecutorService executor = Executors.newSingleThreadExecutor();
 
     //test 1 min
-    @Scheduled(cron = "0 35 10 * * 1-5")
+    @Scheduled(cron = "0 0/10 10-18 * * 1-5")
     public void timerToNow1() throws InterruptedException, ExecutionException, TimeoutException {
         Future<Object> result = doSomething();
         result.get(3000000, TimeUnit.MILLISECONDS);
     }
 
     //test 1 min
-    @Scheduled(cron = "0 35 14 * * 1-5")
-    public void timerToNow2() throws InterruptedException, ExecutionException, TimeoutException {
-        Future<Object> result = doSomething();
-        result.get(3000000, TimeUnit.MILLISECONDS);
-    }
+//    @Scheduled(cron = "0 35 14 * * 1-5")
+//    public void timerToNow2() throws InterruptedException, ExecutionException, TimeoutException {
+//        Future<Object> result = doSomething();
+//        result.get(3000000, TimeUnit.MILLISECONDS);
+//    }
 
     @Async
     Future<Object> doSomething() {
