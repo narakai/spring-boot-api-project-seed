@@ -66,7 +66,7 @@ public class ScheduledTasks {
         RestTemplate restTemplate = new RestTemplate(requestFactory);
 
         System.out.println("now time:" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-        String url = "http://www3.nhk.or.jp/news/easy/news-list.json";
+        String url = "https://www3.nhk.or.jp/news/easy/news-list.json";
         String result = restTemplate.getForObject(url, String.class, new HashMap<>());
         return getArticleData(result);
     }
