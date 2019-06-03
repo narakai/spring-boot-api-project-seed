@@ -35,15 +35,15 @@ public class ScheduledTasks {
         result.get(3000000, TimeUnit.MILLISECONDS);
     }
 
-    @Scheduled(cron = "0 0/30 * * * *")
-    public void scrapyAsahi() {
-        runShell2("asahi.sh");
-    }
-
-    @Scheduled(cron = "0 0/45 * * * *")
-    public void scrapyAsahiEditorial() {
-        runShell2("asahi_editorial.sh");
-    }
+//    @Scheduled(cron = "0 0/30 * * * *")
+//    public void scrapyAsahi() {
+//        runShell2("asahi.sh");
+//    }
+//
+//    @Scheduled(cron = "0 0/45 * * * *")
+//    public void scrapyAsahiEditorial() {
+//        runShell2("asahi_editorial.sh");
+//    }
 
     //test 1 min
 //    @Scheduled(cron = "0 35 14 * * 1-5")
@@ -147,19 +147,19 @@ public class ScheduledTasks {
         return returnCode;
     }
 
-    private synchronized int runShell2(String shell) {
-        int returnCode = -1;
-        try {
-            String[] command = {"/home/python/" + shell};
-            ProcessBuilder builder = new ProcessBuilder(command);
-            builder.redirectInput(ProcessBuilder.Redirect.INHERIT);
-            builder.redirectOutput(ProcessBuilder.Redirect.INHERIT);
-            builder.redirectError(ProcessBuilder.Redirect.INHERIT);
-            Process process = builder.start();
-            returnCode = process.waitFor();
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-        }
-        return returnCode;
-    }
+//    private synchronized int runShell2(String shell) {
+//        int returnCode = -1;
+//        try {
+//            String[] command = {"/home/python/" + shell};
+//            ProcessBuilder builder = new ProcessBuilder(command);
+//            builder.redirectInput(ProcessBuilder.Redirect.INHERIT);
+//            builder.redirectOutput(ProcessBuilder.Redirect.INHERIT);
+//            builder.redirectError(ProcessBuilder.Redirect.INHERIT);
+//            Process process = builder.start();
+//            returnCode = process.waitFor();
+//        } catch (IOException | InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        return returnCode;
+//    }
 }
