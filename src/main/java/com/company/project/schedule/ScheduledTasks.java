@@ -29,11 +29,11 @@ public class ScheduledTasks {
     private ExecutorService executor = Executors.newSingleThreadExecutor();
 
     //test 1 min
-    @Scheduled(cron = "0 0/10 10-18 * * 1-5")
-    public void timerToNow1() throws InterruptedException, ExecutionException, TimeoutException {
-        Future<Object> result = doSomething();
-        result.get(3000000, TimeUnit.MILLISECONDS);
-    }
+//    @Scheduled(cron = "0 0/10 10-18 * * 1-5")
+//    public void timerToNow1() throws InterruptedException, ExecutionException, TimeoutException {
+//        Future<Object> result = doSomething();
+//        result.get(3000000, TimeUnit.MILLISECONDS);
+//    }
 
     @Scheduled(cron = "0 0/30 * * * *")
     public void scrapyAsahi() {
